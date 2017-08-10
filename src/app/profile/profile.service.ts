@@ -14,12 +14,11 @@ export class ProfileService {
       .catch(err => console.log(err));
   }
 
-  postProfile(id: String, profile: any): Promise<any> {
+  postProfile(id: String, profile: any) {
     return this.http.post(`http://localhost:3000/user/${id}`, profile)
       .toPromise()
       .then(response => response.json())
       .catch(err => console.log(err));
   }
-
 
 }

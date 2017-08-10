@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from './profile.service';
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -21,4 +22,7 @@ export class ProfileComponent implements OnInit {
       .then(profile => ({ name: this.name, age: this.age } = profile));
   }
 
+  submit() {
+    this.profileService.postProfile(this.id, { id: this.id, name: this.name, age: this.age});
+  }
 }

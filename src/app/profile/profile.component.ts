@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from './profile.service';
+import {UserProfile } from './user-profile';
 
 
 @Component({
@@ -9,20 +10,17 @@ import { ProfileService } from './profile.service';
   providers: [ProfileService]
 })
 export class ProfileComponent implements OnInit {
-  private id: String;
-  private name: String;
-  private age: Number;
+  private userProfile: UserProfile;
 
   constructor(private profileService: ProfileService) {
-    this.id = '0';
+    this.userProfile = new UserProfile();
   }
 
   ngOnInit() {
-    this.profileService.getProfile(this.id)
-      .then(profile => ({ name: this.name, age: this.age } = profile));
+    this.profileService.getProfile('0').then(user => this.userProfile = user);
   }
 
   submit() {
-    this.profileService.postProfile(this.id, { id: this.id, name: this.name, age: this.age});
+    this.profileService.postProfile('0', this.userProfile).then(userProfile => this.userProfile = userProfile);
   }
 }

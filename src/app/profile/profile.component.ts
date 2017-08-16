@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from './profile.service';
 import {UserProfile } from './user-profile';
-
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -9,10 +9,10 @@ import {UserProfile } from './user-profile';
   styleUrls: ['./profile.component.css'],
   providers: [ProfileService]
 })
-export class ProfileComponent implements OnInit {
+export class EditProfileComponent implements OnInit {
   private userProfile: UserProfile;
 
-  constructor(private profileService: ProfileService) {
+  constructor(private profileService: ProfileService, private router: Router) {
     this.userProfile = new UserProfile();
   }
 

@@ -1,8 +1,6 @@
-import { UserProfile } from './profile/user-profile';
-import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { Http } from '@angular/http';
+import {Injectable} from '@angular/core';
+import {CanActivate} from '@angular/router';
+import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -15,7 +13,7 @@ export class AuthenticationGuard implements CanActivate {
       .map(response => response.json())
       .map(response => {
         if (response.token) {
-          localStorage.setItem('token', JSON.stringify(response));
+          localStorage.setItem('token', response.token);
         }
       });
   }
@@ -25,5 +23,9 @@ export class AuthenticationGuard implements CanActivate {
       return true;
     }
     return false;
+  }
+
+  logout() {
+    localStorage.setItem('token', null);
   }
 }

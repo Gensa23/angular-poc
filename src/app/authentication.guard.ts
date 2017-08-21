@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {CanActivate} from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -18,8 +18,8 @@ export class AuthenticationGuard implements CanActivate {
       });
   }
   canActivate() {
-    console.log(this.token);
-    if (localStorage.getItem('token')) {
+    console.log(localStorage.getItem('token'));
+    if (localStorage.getItem('token') != null) {
       return true;
     }
     return false;

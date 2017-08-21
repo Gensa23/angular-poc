@@ -10,28 +10,22 @@ import { EditProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {ViewProfileComponent} from './profile/view-profile.component';
 import { LoginComponent } from './login/login.component';
+import { CounterComponent } from './counter/counter.component';
 
-const appRoutes: Routes = [
-    {path: 'profile', component: ViewProfileComponent},
-    {path: 'profile/edit', component: EditProfileComponent, data: {id: 0} },
-    {path: 'login', component: LoginComponent},
-    {path: '',  redirectTo: '/login', pathMatch: 'full'},
-    {path: '**', component: NotFoundComponent}
-];
 @NgModule({
   declarations: [
     AppComponent,
     EditProfileComponent,
     ViewProfileComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
     AppRoutingModule
-    // RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

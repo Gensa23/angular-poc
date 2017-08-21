@@ -19,13 +19,13 @@ export class AuthenticationGuard implements CanActivate {
   }
   canActivate() {
     console.log(localStorage.getItem('token'));
-    if (localStorage.getItem('token') != null) {
+    if (localStorage.getItem('token')) {
       return true;
     }
     return false;
   }
 
   logout() {
-    localStorage.setItem('token', null);
+    localStorage.setItem('token', '');
   }
 }

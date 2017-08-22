@@ -18,7 +18,6 @@ export class AuthenticationGuard implements CanActivate {
       });
   }
   canActivate() {
-    console.log(this.token);
     if (localStorage.getItem('token')) {
       return true;
     }

@@ -1,24 +1,23 @@
-import { Action } from '@ngrx/store';
+import { RECEIVE_USER, UPDATE_NAME, UPDATE_AGE, Actions } from '../actions'
 
 
-const initalState = {
-	id: 0,
-	name: '',
-	age: 0
+export interface State {
+    id: number
+    name: string
+    age: number
 }
 
-export function userProfileReducer(state = initalState, action: Action) {
-	switch (action.type) {
-		case INCREMENT:
-			return state + 1;
+const initalState = { id: 0, name: '', age: 0}
 
-		case DECREMENT:
-			return state - 1;
-
-		case RESET:
-			return 0;
-
-		default:
-			return state;
-	}
+export function reducer(state: State = initalState, action: Actions): State {
+    switch (action.type) {
+        case RECEIVE_USER:
+            return action.payload
+        case UPDATE_NAME:
+            return Object.assign({}, state, { name: action.payload })
+        case UPDATE_AGE:
+            return Object.assign({}, state, { age: action.payload })
+        default:
+            return state
+    }
 }

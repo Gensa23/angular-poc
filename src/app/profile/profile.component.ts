@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from './profile.service';
 import {UserProfile } from './user-profile';
 import {Router} from '@angular/router';
+import { Store } from '@ngrx/store';
+import { State } from '../../reducers'
 
 @Component({
   selector: 'app-profile',
@@ -10,17 +12,21 @@ import {Router} from '@angular/router';
   providers: [ProfileService]
 })
 export class EditProfileComponent implements OnInit {
-  private userProfile: UserProfile;
+  public userProfile: UserProfile;
 
-  constructor(private profileService: ProfileService, private router: Router) {
+  constructor(private store: Store<State>) {
     this.userProfile = new UserProfile();
+    store
+      .select('userProfile')
+      .subscribe(state => console.log)
+    
   }
 
   ngOnInit() {
-    this.profileService.getProfile('0').then(user => this.userProfile = user);
+    
   }
 
   submit() {
-    this.profileService.postProfile('0', this.userProfile).then(userProfile => this.userProfile = userProfile);
+    this.store.dispatch({ type: 'UPDATE_AGE', age: 10 })
   }
 }

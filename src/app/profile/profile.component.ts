@@ -23,14 +23,10 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnInit() { 
-    this.profileService.getProfile('0')
-      .then(user => this.userProfile = user)
-      .then(userProfile => this.store.dispatch({ type: 'RECEIVE_USER', payload: userProfile }));
+    this.store.dispatch({ type: 'FETCH_USER' })
   }
 
   submit() {
-    this.profileService.postProfile('0', this.userProfile)
-      .then(userProfile => this.userProfile = userProfile)
-      .then(userProfile => this.store.dispatch({ type: 'RECEIVE_USER', payload: userProfile }));
+    this.store.dispatch({ type: 'POST_USER', payload: { name: this.userProfile.name, age: this.userProfile.age }})
   }
 }

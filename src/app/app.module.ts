@@ -13,6 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from '../reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { ProfileService } from './profile/profile.service';
 
 const appRoutes: Routes = [
     {path: 'profile', component: ViewProfileComponent},
@@ -35,7 +37,8 @@ const appRoutes: Routes = [
     FormsModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([ProfileService])
     // RouterModule.forRoot(appRoutes)
   ],
   providers: [],

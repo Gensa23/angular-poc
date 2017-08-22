@@ -18,12 +18,13 @@ export class ViewProfileComponent implements OnInit {
 
   constructor(private profileService: ProfileService, private authenticationGuard: AuthenticationGuard, private router: Router, private store: Store<State>) {
     this.userProfile = new UserProfile();
+    store
+      .select('userProfile')
+      .subscribe((userProfile: UserProfile) => this.userProfile = userProfile)
   }
 
   ngOnInit() {
-    this.profileService.getProfile('0')
-      .then(user => this.userProfile = user)
-      .then(userProfile => this.store.dispatch({ type: 'RECEIVE_USER', payload: userProfile }));
+    this.store.dispatch({ type: 'FETCH_USER' })
   }
 
 

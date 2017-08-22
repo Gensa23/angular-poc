@@ -1,4 +1,5 @@
-import { AuthenticationGuard } from './../authentication.guard';
+import { StoreFacadeService } from './../store-facade.service';
+import { LoginService } from './../login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -6,19 +7,19 @@ import { Router, ActivatedRoute } from '@angular/router';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [AuthenticationGuard]
+  providers: [LoginService]
 })
 export class LoginComponent implements OnInit {
   username = '';
   password = '';
 
-  constructor(private router: Router, private authenticationGuard: AuthenticationGuard) { }
+  constructor(private router: Router, private loginService: LoginService, private store: StoreFacadeService) { }
 
   ngOnInit() {
   }
 
   submit() {
-    this.authenticationGuard.login(this.username, this.password).subscribe(
+    this.loginService.login(this.username, this.password).subscribe(
       response => {
         this.router.navigate(['/profile']);
       },

@@ -1,3 +1,5 @@
+import { ProfileService } from './profile/profile.service';
+import { StoreFacadeService } from './store-facade.service';
 import { AuthenticationGuard } from './authentication.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,7 +29,7 @@ import { CounterComponent } from './counter/counter.component';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [StoreFacadeService, ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

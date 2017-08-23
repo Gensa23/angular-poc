@@ -1,3 +1,4 @@
+import { MaterialModule } from './material/material.module';
 import {AppRoutingModule} from './app-routing.module';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
@@ -8,12 +9,7 @@ import {EditProfileComponent} from './profile/profile.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {ViewProfileComponent} from './profile/view-profile.component';
 import {LoginComponent} from './login/login.component';
-import 'hammerjs';
-import {
-  MdButtonModule, MdCardModule, MdInputModule, MdMenuModule, MdTabsModule,
-  MdToolbarModule
-} from '@angular/material';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MdIconModule, MdTabNav} from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -28,16 +24,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     HttpModule,
     FormsModule,
     AppRoutingModule,
-    MdToolbarModule,
-    MdMenuModule,
-    BrowserAnimationsModule,
-    MdTabsModule,
-    MdInputModule,
-    MdButtonModule,
-    MdCardModule
+    MaterialModule
     // RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

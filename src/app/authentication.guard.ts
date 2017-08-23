@@ -26,6 +26,6 @@ export class AuthenticationGuard implements CanActivate {
   }
 
   logout() {
-    localStorage.setItem('token', null);
+    localStorage.setItem('token', '');
   }
 }

@@ -7,6 +7,9 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-view-profile',
   templateUrl: './view-profile.component.html',
+  styles: [`.example-card {
+  width: 400px;}
+  `],
   providers: [ProfileService]
 })
 export class ViewProfileComponent implements OnInit {

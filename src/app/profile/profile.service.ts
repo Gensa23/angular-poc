@@ -11,7 +11,7 @@ export class ProfileService {
   getProfile(id: String): Promise<UserProfile> {
     const headers = new Headers({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
     const options = new RequestOptions({ headers: headers });
-    return this.http.get(`http://localhost:3000/user/${id}`, options)
+    return this.http.get(`http://localhost:3000/api/user/${id}`, options)
       .toPromise()
       .then(response => response.json())
       .catch(err => console.log(err));
@@ -20,7 +20,7 @@ export class ProfileService {
   postProfile(id: String, profile: UserProfile): Promise<UserProfile> {
     const headers = new Headers({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
     const options = new RequestOptions({ headers: headers });
-    return this.http.post(`http://localhost:3000/user/${id}`, {...profile}, options)
+    return this.http.post(`http://localhost:3000/api/user/${id}`, {...profile}, options)
       .toPromise()
       .then(response => response.json())
       .catch(err => console.log(err));

@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
   providers: [ProfileService]
 })
 export class EditProfileComponent implements OnInit {
-  private userProfile: UserProfile;
+  public userProfile: UserProfile;
 
   constructor(private profileService: ProfileService, private router: Router) {
     this.userProfile = new UserProfile();

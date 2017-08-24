@@ -9,7 +9,7 @@ export class AuthenticationGuard implements CanActivate {
   constructor(private http: Http) { }
 
   login(username: String, password: String) {
-    return this.http.post(`http://localhost:3000/login`, {username, password})
+    return this.http.post(`http://localhost:3000/api/login`, {username, password})
       .map(response => response.json())
       .map(response => {
         if (response.token) {

@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
   providers: [ProfileService]
 })
 export class ViewProfileComponent implements OnInit {
-  private userProfile: UserProfile;
+  public userProfile: UserProfile;
   title = 'Profile';
 
   constructor(private profileService: ProfileService, private authenticationGuard: AuthenticationGuard, private router: Router) {
